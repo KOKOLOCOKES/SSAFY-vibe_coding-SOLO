@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JPOP Archive | 나만의 취향이 담긴 큐레이션</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // 기존 시각적 디자인 색상을 Tailwind 테마로 확장
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-grey': '#121212',
+                        'sunset-orange': '#FF4500',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-grey': '#121212',
+                        'sunset-orange': '#FF4500',
+                    },
+                    // [추가] 좌우로 빠르게 흔들리는 커스텀 애니메이션 등록
+                    animation: {
+                        'fast-wiggle': 'fast-wiggle 0.15s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        'fast-wiggle': {
+                            '0%, 100%': { transform: 'translateX(0) rotate(0deg)' },
+                            '25%': { transform: 'translateX(-4px) rotate(-1deg)' },
+                            '75%': { transform: 'translateX(4px) rotate(1deg)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-grey': '#121212',
+                        'sunset-orange': '#FF4500',
+                    },
+                    animation: {
+                        'fast-wiggle': 'fast-wiggle 0.15s ease-in-out infinite',
+                        
+                        // 전체 주기를 2.7초로 더 늦추고, 탁탁 끊어지는 단계를 최소화(steps(1))하여 과하지 않게 제어합니다.
+                        'cyber-glitch': 'cyber-glitch 2.7s steps(1) infinite',
+                    },
+                    keyframes: {
+                        'fast-wiggle': {
+                            '0%, 100%': { transform: 'translateX(0) rotate(0deg)' },
+                            '25%': { transform: 'translateX(-4px) rotate(-1deg)' },
+                            '75%': { transform: 'translateX(4px) rotate(1deg)' },
+                        },
+                        
+                        // 과한 쪼개짐(clip-path)과 찌그러짐(skew)을 제거한 절제된 릴리즈 폼
+                        'cyber-glitch': {
+                            // [구간 1] 0% ~ 90% : 평소에는 눈에 띄지 않을 만큼 아주 미세하고 정적인 네온 빛만 유지 (- - -)
+                            '0%, 20%, 40%, 60%, 80%, 90%': { 
+                                textShadow: '0.5px -0.5px 0.5px rgba(0, 255, 255, 0.5), -0.5px 0.5px 0.5px rgba(255, 0, 255, 0.5)',
+                                transform: 'translate(0, 0)'
+                            },
+                            '10%, 30%, 50%, 70%': { 
+                                textShadow: '-0.3px 0.3px 0.3px rgba(0, 255, 255, 0.3), 0.3px -0.3px 0.3px rgba(255, 0, 255, 0.3)',
+                                transform: 'translate(0.2px, -0.2px)'
+                            },
+                            
+                            // [구간 2] 92% ~ 96% : 3.5초 주기가 끝날 무렵 찰나의 순간에만 가볍게 "틱-" 하고 튀는 효과 (---)
+                            '92%': { 
+                                textShadow: '-2px 1px 0 #00ffff, 2px -1px 0 #ff00ff',
+                                transform: 'translate(-1.5px, 0.5px)'
+                            },
+                            '94%': { 
+                                textShadow: '2px 1.5px 0 #00ffff, -2px -1.5px 0 #ff00ff',
+                                transform: 'translate(1px, -1px)'
+                            },
+                            '96%': { 
+                                textShadow: '-1.5px -1.5px 0 #00ffff, 1.5px 1.5px 0 #ff00ff',
+                                transform: 'translate(-0.5px, 1px)'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-grey': '#121212',
+                        'sunset-orange': '#FF4500',
+                    },
+                    animation: {
+                        'fast-wiggle': 'fast-wiggle 0.15s ease-in-out infinite',
+                        'cyber-glitch': 'cyber-glitch 3.5s steps(1) infinite',
+                        // [추가] 오답 시 강력하게 쾅 흔들리는 애니메이션 효과 (단발성)
+                        'error-shake': 'error-shake 0.4s ease-in-out',
+                    },
+                    keyframes: {
+                        'fast-wiggle': {
+                            '0%, 100%': { transform: 'translateX(0) rotate(0deg)' },
+                            '25%': { transform: 'translateX(-4px) rotate(-1deg)' },
+                            '75%': { transform: 'translateX(4px) rotate(1deg)' },
+                        },
+                        // [추가] 오답용 좌우 흔들림 키프레임
+                        'error-shake': {
+                            '0%, 100%': { transform: 'translateX(0)' },
+                            '10%, 30%, 50%, 70%, 90%': { transform: 'translateX(-6px)' },
+                            '20%, 40%, 60%, 80%': { transform: 'translateX(6px)' },
+                        },
+                        'cyber-glitch': {
+                            '0%, 20%, 40%, 60%, 80%, 90%': { 
+                                textShadow: '0.5px -0.5px 0.5px rgba(0, 255, 255, 0.5), -0.5px 0.5px 0.5px rgba(255, 0, 255, 0.5)',
+                                transform: 'translate(0, 0)'
+                            },
+                            '10%, 30%, 50%, 70%': { 
+                                textShadow: '-0.3px 0.3px 0.3px rgba(0, 255, 255, 0.3), 0.3px -0.3px 0.3px rgba(255, 0, 255, 0.3)',
+                                transform: 'translate(0.2px, -0.2px)'
+                            },
+                            '92%': { 
+                                textShadow: '-2px 1px 0 #00ffff, 2px -1px 0 #ff00ff',
+                                transform: 'translate(-1.5px, 0.5px)'
+                            },
+                            '94%': { 
+                                textShadow: '2px 1.5px 0 #00ffff, -2px -1.5px 0 #ff00ff',
+                                transform: 'translate(1px, -1px)'
+                            },
+                            '96%': { 
+                                textShadow: '-1.5px -1.5px 0 #00ffff, 1.5px 1.5px 0 #ff00ff',
+                                transform: 'translate(-0.5px, 1px)'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-deep-grey text-white">
+
+    <header class="fixed w-full z-50 bg-deep-grey/90 backdrop-blur-md border-b border-gray-800">
+        <nav class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-black italic tracking-tighter cursor-pointer" data-link="home">
+                JPOP<span class="text-sunset-orange">.ARCHIVE</span>
+            </h1>
+            <div class="flex gap-8 font-bold text-sm">
+                <button data-link="home" class="hover:text-sunset-orange transition">Home</button>
+                <button data-link="playlist" class="hover:text-sunset-orange transition">Playlist</button>
+                <button data-link="recommend" class="hover:text-sunset-orange transition">Recommend</button>
+                <button data-link="mypage" class="hover:text-sunset-orange transition">My page</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="pt-24 min-h-screen">
+        <section id="page-home" class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col items-center justify-center min-h-[90vh] text-center relative">
+                <h2 class="text-6xl md:text-8xl font-black italic mb-6 animate-cyber-glitch tracking-tight select-none">
+                    JPOP<br><span class="text-sunset-orange">ARCHIVE</span>
+                </h2>
+                <p class="text-gray-400 text-lg">나만의 취향이 담긴 음악 아카이브를 만나보세요.</p>
+                <div class="absolute bottom-10 animate-pulse text-gray-500 font-bold">스크롤해서 실시간 인기 곡을 알아보세요 ↓</div>
+            </div>
+            <div id="home-chart" class="pb-20 pt-20">
+                <h3 class="text-2xl font-black mb-10 border-l-4 border-sunset-orange pl-4">실시간 TOP 5</h3>
+                <div id="top-5-container" class="grid md:grid-cols-2 gap-10"></div>
+                <div class="mt-12 text-center">
+                    <button data-link="playlist" class="bg-sunset-orange text-white px-8 py-4 rounded-full font-bold hover:bg-orange-600 transition">더 많은 곡 찾아보기</button>
+                </div>
+                <div class="mt-20">
+                    <h3 class="text-2xl font-black mb-10 border-l-4 border-sunset-orange pl-4">실시간 코멘트</h3>
+                    <div id="recent-comments" class="grid md:grid-cols-2 gap-4"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-playlist" class="hidden py-12 px-6 max-w-4xl mx-auto">
+            <h2 class="text-3xl font-black mb-12 border-l-4 border-sunset-orange pl-4">인기 플레이리스트</h2>
+            <div id="song-list" class="space-y-4"></div>
+        </section>
+
+        <section id="page-recommend" class="hidden py-12 px-6 max-w-4xl mx-auto">
+            <div class="mb-20">
+                <h3 class="text-xl font-bold mb-6">내 취향 노래 찾기</h3>
+                <div id="drop-zone" class="w-full max-w-md h-40 border-4 border-dashed border-gray-700 mx-auto flex flex-col items-center justify-center text-gray-300 rounded-xl mb-6 bg-gray-900 p-4 text-center">
+                    <span>태그를 이곳에 드래그하세요</span>
+                </div>
+                <div class="text-center mb-4">
+                    <button id="clear-tags-btn" class="text-xs text-gray-500 hover:text-sunset-orange underline">선택 태그 초기화</button>
+                </div>
+                <div id="tags-container" class="flex flex-wrap justify-center gap-2 max-h-40 overflow-y-auto p-2 bg-gray-900/50 rounded-xl"></div>
+                <div class="text-center mt-6">
+                    <button id="find-recommend-btn" class="bg-sunset-orange px-8 py-3 rounded-full font-bold hover:bg-orange-600 transition">상자 흔들기</button>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-12">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-bold">음악 퀴즈</h3>
+                    <div class="flex gap-3">
+                        <div class="bg-gray-900 px-4 py-2 rounded-lg border border-gray-800 text-sm font-bold">
+                            <span class="text-gray-400">Round: </span><span id="quiz-round-display" class="text-white">0 / 10</span>
+                        </div>
+                        <div class="bg-gray-900 px-4 py-2 rounded-lg border border-gray-800 text-sm font-bold">
+                            <span class="text-gray-400">Score: </span><span id="quiz-score-display" class="text-sunset-orange font-black">0</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="quiz-area" class="bg-gray-900 p-8 rounded-xl text-center relative">
+                    <div id="quiz-start-wrapper">
+                        <button id="start-quiz-btn" class="bg-sunset-orange px-10 py-4 rounded-full font-black text-xl hover:bg-orange-600 transition">퀴즈 시작하기</button>
+                    </div>
+                    <iframe id="quiz-player" class="hidden w-full h-48 rounded-lg mb-4" src="" allow="autoplay"></iframe>
+                    <div id="quiz-options" class="grid grid-cols-2 gap-4 mt-6 hidden"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-mypage" class="hidden py-12 px-6 max-w-4xl mx-auto">
+            <div class="flex flex-col md:flex-row gap-8 mb-12">
+                <div class="bg-gray-900 p-8 rounded-xl border border-gray-800 text-center w-full md:w-64 h-fit">
+                    <img src="https://placehold.co/100x100/374151/white?text=User" class="rounded-full mx-auto mb-4 border-4 border-gray-800">
+                    <div class="flex items-center justify-center gap-2 mt-2">
+                        <div id="nickname-container" class="font-black text-xl truncate max-w-[150px]">ㅇㅇ</div>
+                        <button id="nickname-btn" class="bg-gray-800 hover:bg-sunset-orange px-3 py-1 rounded text-xs font-bold transition">수정</button>
+                    </div>
+                </div>
+                <div class="flex-1 bg-gray-900 p-8 rounded-xl border border-gray-800">
+                    <h3 class="text-xl font-black mb-6">내가 남긴 코멘트 (최대 20개)</h3>
+                    <div id="my-comments" class="space-y-4 max-h-[260px] overflow-y-auto pr-2"></div>
+                </div>
+            </div>
+            <div id="liked-songs-section">
+                <h3 class="text-xl font-black mb-6">내가 좋아요한 곡</h3>
+                <div id="liked-songs-list" class="space-y-4"></div>
+            </div>
+        </section>
+    </main>
+
+    <div id="modal" class="fixed inset-0 bg-black/95 hidden z-50 p-6 flex items-center justify-center">
+        <div class="bg-gray-900 w-full max-w-5xl rounded-2xl p-6 relative flex flex-col md:flex-row gap-8">
+            <button id="close-modal-btn" class="absolute top-4 right-4 text-gray-400 hover:text-white font-bold z-10">CLOSE ✕</button>
+            <div class="flex-1 flex items-center"><div class="aspect-video w-full"><iframe id="player" class="w-full h-full rounded-lg" src="" allowfullscreen allow="autoplay"></iframe></div></div>
+            <div class="flex-1 flex flex-col gap-4">
+                <div>
+                    <h3 id="modal-title" class="text-2xl font-black"></h3>
+                    <p id="modal-artist" class="text-gray-400 mt-1"></p>
+                </div>
+                <div class="flex-1 overflow-y-auto max-h-64 space-y-3 pr-2" id="comment-list"></div>
+                <div class="flex gap-2 pt-4 border-t border-gray-800">
+                    <input type="text" id="user-name" placeholder="닉네임" class="bg-gray-800 px-3 py-2 rounded text-sm w-1/4 text-white focus:outline-none focus:ring-1 focus:ring-sunset-orange">
+                    <input type="text" id="user-comment" placeholder="코멘트(최대 10자)..." maxlength="10" class="bg-gray-800 px-3 py-2 rounded text-sm flex-1 text-white focus:outline-none focus:ring-1 focus:ring-sunset-orange">
+                    <button id="add-comment-btn" class="bg-sunset-orange px-4 py-2 rounded font-bold text-sm hover:bg-orange-600 transition">등록</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="quiz-result-popup" class="fixed inset-0 bg-black/80 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-gray-950 border-2 border-gray-800 w-full max-w-md rounded-2xl p-8 text-center shadow-2xl">
+            <div id="popup-status-badge" class="text-4xl mb-3">🎉</div>
+            <h4 id="popup-message" class="text-2xl font-black mb-4"></h4>
+            <div class="bg-gray-900 border border-gray-800 p-4 rounded-xl mb-6">
+                <p id="popup-score-text" class="text-lg font-bold text-gray-300"></p>
+            </div>
+            <button id="quiz-popup-confirm-btn" class="w-full bg-sunset-orange text-white py-3 rounded-xl font-black text-base hover:bg-orange-600 transition tracking-wide">확인</button>
+        </div>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
