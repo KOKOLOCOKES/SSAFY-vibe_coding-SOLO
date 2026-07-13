@@ -3,6 +3,7 @@ SSAFY 바이브코딩 웹사이트 제작 (개인)
 
 ## JPOP ARCHIVE
 <img width="432" height="184" alt="image" src="https://github.com/user-attachments/assets/b5b71497-c88d-4503-b433-15003a95ce8b" />
+
 제 Youtube Music의 J-POP 플레이리스트를 소개하는 웹사이트입니다.
 
 Gemini API를 활용해 제작하였습니다. (3.5 Flash, 3.1 Flash-Lite)
